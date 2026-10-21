@@ -2960,7 +2960,7 @@ impl Checker {
     // all identical ignoring their return type, the result is same signature but with return type as
     // union type of return types from these signatures
     // checker.go:10461
-    pub(crate) fn get_contextual_signature(&mut self, node: P<Node>) -> Option<P<Signature>> {
+    pub fn get_contextual_signature(&mut self, node: P<Node>) -> Option<P<Signature>> {
         let t = self.get_apparent_type_of_contextual_type(node, ContextFlags::Signature)?;
         if !t.flags().intersects(TypeFlags::Union) {
             return self.get_contextual_call_signature(t, node);
