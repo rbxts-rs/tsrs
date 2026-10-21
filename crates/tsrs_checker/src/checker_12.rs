@@ -1944,7 +1944,7 @@ impl Checker {
     }
 
     // checker.go:25171
-    pub(crate) fn create_array_type(&mut self, element_type: P<Type>) -> P<Type> {
+    pub fn create_array_type(&mut self, element_type: P<Type>) -> P<Type> {
         self.create_array_type_ex(element_type, false /*readonly*/)
     }
 
@@ -2912,7 +2912,7 @@ pub(crate) fn is_fresh_literal_type(t: P<Type>) -> bool {
 
 impl Checker {
     // checker.go:25775
-    pub(crate) fn get_string_literal_type(&mut self, value: &str) -> P<Type> {
+    pub fn get_string_literal_type(&mut self, value: &str) -> P<Type> {
         let mut t = self.string_literal_types.get(value);
         if t.is_none() {
             let literal = self.new_literal_type(
@@ -2927,7 +2927,7 @@ impl Checker {
     }
 
     // checker.go:25784
-    pub(crate) fn get_number_literal_type(&mut self, value: Number) -> P<Type> {
+    pub fn get_number_literal_type(&mut self, value: Number) -> P<Type> {
         // NaN cannot be used as a Go map key because NaN != NaN in IEEE 754,
         // so Go map lookups for NaN always miss. Cache NaN type separately.
         if value.is_nan() {
