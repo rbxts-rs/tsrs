@@ -2641,7 +2641,7 @@ impl Program {
     }
 
     // program.go:1488
-    fn get_semantic_diagnostics_with_checker(
+    pub fn get_semantic_diagnostics_with_checker(
         &'static self,
         ctx: &Context,
         c: &mut Checker,
