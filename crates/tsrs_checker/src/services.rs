@@ -1397,7 +1397,7 @@ impl Checker {
     // [ a ] from
     //
     //	[a] = [ some array ...]
-    fn get_type_of_assignment_pattern(&mut self, expr: P<Node>) -> Option<P<Type>> {
+    pub fn get_type_of_assignment_pattern(&mut self, expr: P<Node>) -> Option<P<Type>> {
         let parent = expr.parent().unwrap();
         // If this is from "for of"
         //     for ( { a } of elems) {
