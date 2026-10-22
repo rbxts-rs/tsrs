@@ -2075,7 +2075,7 @@ impl Checker {
     }
 
     // checker.go:27216
-    pub(crate) fn get_literal_type_from_property(
+    pub fn get_literal_type_from_property(
         &mut self,
         prop: P<Symbol>,
         include: TypeFlags,
