@@ -3712,7 +3712,7 @@ impl Checker {
     }
 
     // checker.go:23946
-    pub(crate) fn is_readonly_array_type(&self, t: P<Type>) -> bool {
+    pub fn is_readonly_array_type(&self, t: P<Type>) -> bool {
         t.object_flags().intersects(ObjectFlags::Reference)
             && t.target() == Some(self.global_readonly_array_type)
     }
