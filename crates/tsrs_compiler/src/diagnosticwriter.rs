@@ -23,7 +23,7 @@ pub enum FileLike {
 }
 
 impl FileLike {
-    fn file_name(&self) -> &str {
+    pub fn file_name(&self) -> &str {
         match self {
             FileLike::SourceFile(file) => file.get().file_name(),
             FileLike::Renamed { file_name, .. } => file_name,
@@ -59,7 +59,7 @@ impl SourceFileLike for FileLike {
 }
 
 // diagnosticwriter.go:58 (ASTDiagnostic).File
-fn diagnostic_file(d: P<Diagnostic>) -> Option<FileLike> {
+pub fn diagnostic_file(d: P<Diagnostic>) -> Option<FileLike> {
     d.loc()?;
     let file = d.file()?;
     let mut file_name = file.get().file_name();
@@ -79,12 +79,12 @@ fn diagnostic_file(d: P<Diagnostic>) -> Option<FileLike> {
 }
 
 // diagnosticwriter.go:83
-fn diagnostic_pos(d: P<Diagnostic>) -> u32 {
+pub fn diagnostic_pos(d: P<Diagnostic>) -> u32 {
     resolve(d).loc.pos().expect_source("rendered diagnostics have source positions")
 }
 
 // diagnosticwriter.go:85
-fn diagnostic_len(d: P<Diagnostic>) -> u32 {
+pub fn diagnostic_len(d: P<Diagnostic>) -> u32 {
     resolve(d).loc.len().expect("rendered diagnostics have source positions")
 }
 
