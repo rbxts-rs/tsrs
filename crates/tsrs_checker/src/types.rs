@@ -13,7 +13,7 @@ pub struct CountCell(Cell<u32>);
 
 impl CountCell {
     #[inline]
-    pub(crate) fn get(&self) -> usize {
+    pub fn get(&self) -> usize {
         self.0.get() as usize
     }
 
@@ -493,7 +493,7 @@ impl ValueSymbolLinks {
 #[derive(Default)]
 pub struct MappedSymbolLinks {
     pub(crate) key_type: Cell<Option<P<Type>>>, // Key type for mapped type member
-    pub(crate) synthetic_origin: Cell<Option<P<Symbol>>>, // For a property on a mapped or spread type, points back to the original property
+    pub synthetic_origin: Cell<Option<P<Symbol>>>, // For a property on a mapped or spread type, points back to the original property
 }
 
 // Additional links for deferred type symbols
@@ -2447,9 +2447,9 @@ impl TupleElementInfo {
 pub struct TupleType {
     interface_type: InterfaceType,
     pub(crate) element_infos: Cell<&'static [TupleElementInfo]>,
-    pub(crate) min_length: CountCell, // Number of required or variadic elements
+    pub min_length: CountCell, // Number of required or variadic elements
     pub(crate) fixed_length: CountCell, // Number of initial required or optional elements
-    pub(crate) combined_flags: Cell<ElementFlags>,
+    pub combined_flags: Cell<ElementFlags>,
     pub(crate) readonly: Cell<bool>,
 }
 embeds!(TupleType, interface_type, InterfaceType);
@@ -2497,12 +2497,12 @@ embeds!(InstantiationExpressionType, object_type, ObjectType);
 #[repr(C)]
 pub struct MappedType {
     object_type: ObjectType,
-    pub(crate) declaration: Cell<Option<P<Node>>>, // MappedTypeNode
+    pub declaration: Cell<Option<P<Node>>>, // MappedTypeNode
     pub(crate) type_parameter: Cell<Option<P<Type>>>,
     pub(crate) constraint_type: OvCell<Option<P<Type>>>,
     pub(crate) name_type: OvCell<Option<P<Type>>>,
     pub(crate) template_type: OvCell<Option<P<Type>>>,
-    pub(crate) modifiers_type: OvCell<Option<P<Type>>>,
+    pub modifiers_type: OvCell<Option<P<Type>>>,
     pub(crate) resolved_apparent_type: OvCell<Option<P<Type>>>,
     pub(crate) contains_error: Cell<bool>,
 }
@@ -2955,8 +2955,8 @@ impl SubstitutionType {
 
 #[derive(Default)]
 pub struct ConditionalRoot {
-    pub(crate) node: Cell<Option<P<Node>>>, // ConditionalTypeNode
-    pub(crate) check_type: Cell<Option<P<Type>>>,
+    pub node: Cell<Option<P<Node>>>, // ConditionalTypeNode
+    pub check_type: Cell<Option<P<Type>>>,
     pub(crate) extends_type: Cell<Option<P<Type>>>,
     pub(crate) is_distributive: Cell<bool>,
     pub(crate) infer_type_parameters: Cell<&'static [P<Type>]>,
@@ -2968,7 +2968,7 @@ pub struct ConditionalRoot {
 #[derive(Default)]
 pub struct ConditionalType {
     constrained_type: ConstrainedType,
-    pub(crate) root: Cell<Option<P<ConditionalRoot>>>,
+    pub root: Cell<Option<P<ConditionalRoot>>>,
     pub(crate) check_type: Cell<Option<P<Type>>>,
     pub(crate) extends_type: Cell<Option<P<Type>>>,
     pub(crate) resolved_true_type: OvCell<Option<P<Type>>>,
