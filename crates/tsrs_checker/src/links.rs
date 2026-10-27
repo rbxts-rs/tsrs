@@ -91,7 +91,7 @@ impl<K: 'static, V: 'static> LinkStore<K, V> {
     }
 
     #[inline]
-    pub(crate) fn try_get(&self, key: P<K>) -> Option<P<V>> {
+    pub fn try_get(&self, key: P<K>) -> Option<P<V>> {
         match self.index(key) {
             Some(index) => Some(self.at(index)),
             None => self.parent.filter(|_| tsrs_core::sharedgraph::COMPILED_IN)?.try_get(key),
