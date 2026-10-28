@@ -1232,7 +1232,7 @@ pub struct Checker {
     pub(crate) jsx_element_links: LinkStore<Node, JsxElementLinks>,
     pub(crate) computed_name_links: LinkStore<Node, ComputedNameNodeLinks>,
     pub(crate) symbol_reference_links: SymbolReferenceLinkStore,
-    pub(crate) value_symbol_links: SymbolArenaLinkStore<ValueSymbolLinks>,
+    pub value_symbol_links: SymbolArenaLinkStore<ValueSymbolLinks>,
     pub mapped_symbol_links: LinkStore<Symbol, MappedSymbolLinks>,
     pub(crate) deferred_symbol_links: LinkStore<Symbol, DeferredSymbolLinks>,
     pub(crate) alias_symbol_links: LinkStore<Symbol, AliasSymbolLinks>,
