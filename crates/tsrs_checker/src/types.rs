@@ -492,7 +492,7 @@ impl ValueSymbolLinks {
 
 #[derive(Default)]
 pub struct MappedSymbolLinks {
-    pub(crate) key_type: Cell<Option<P<Type>>>, // Key type for mapped type member
+    pub key_type: Cell<Option<P<Type>>>, // Key type for mapped type member
     pub synthetic_origin: Cell<Option<P<Symbol>>>, // For a property on a mapped or spread type, points back to the original property
 }
 
