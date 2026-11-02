@@ -573,7 +573,7 @@ pub(crate) fn thread_cpu_seconds() -> f64 {
 
 pub struct CheckerPoolImpl {
     program: &'static Program,
-    checker_count: usize,
+    pub checker_count: usize,
     single_threaded: bool,
     state: OnceLock<PoolState>,
     // tsrs-only: the file assignment of the pool of the program this one reuses (`inherited_associations`).
@@ -1275,7 +1275,7 @@ impl CheckerPoolImpl {
 
 impl PoolState {
     // The checker that runs `file` now (see `owners`).
-    fn owner_of(&self, file: P<SourceFile>) -> Option<usize> {
+    pub fn owner_of(&self, file: P<SourceFile>) -> Option<usize> {
         // Written by stealing inside a work group, read after it joined.
         self.file_indices
             .get(&file)
