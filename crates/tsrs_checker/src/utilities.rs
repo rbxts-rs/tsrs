@@ -1260,7 +1260,7 @@ pub(crate) fn is_object_literal_type(t: P<Type>) -> bool {
 }
 
 // utilities.go:871
-pub(crate) fn is_declaration_readonly(declaration: P<Node>) -> bool {
+pub fn is_declaration_readonly(declaration: P<Node>) -> bool {
     ast::get_combined_modifier_flags(declaration).intersects(ModifierFlags::Readonly)
         && !ast::is_parameter_property_declaration(declaration, declaration.parent().unwrap())
 }
